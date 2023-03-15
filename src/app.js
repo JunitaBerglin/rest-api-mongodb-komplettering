@@ -1,6 +1,8 @@
 require('dotenv').config()
 const express = require('express')
 const { default: mongoose } = require('mongoose')
+const participantRoute = require('./routes/participantRoute')
+const danceRoute = require('./routes/danceRoute')
 
 const app = express()
 
@@ -11,7 +13,10 @@ app.use((req, res, next) => {
 	next()
 })
 
-const port = 5000
+app.use('/api/v1/danceclasses', danceRoute)
+app.use('/api/v1/patricipants', participantRoute)
+
+const port = 5001
 const run = async () => {
 	try {
 		mongoose.set('strictQuery', false)
