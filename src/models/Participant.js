@@ -9,19 +9,16 @@ const ParticipantSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	location: {
+	class: {
 		type: String,
+		required: true,
 	},
-	zipcode: {
-		type: Number,
-	},
-	description: {
+	role: {
 		type: String,
-		minLength: 20,
-		maxLength: 200,
+		required: true,
 	},
-	payment: {
-		type: Boolean,
+	paymentStatus: {
+		type: String,
 		required: true,
 	},
 })

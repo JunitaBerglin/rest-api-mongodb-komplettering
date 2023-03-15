@@ -1,9 +1,9 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 // @ts-ignore
-const springTerm2023MockData = require('./mockdata/springTerm2023.json')
+const springTerm2023 = require('./springTerm2023')
 // @ts-ignore
-const fallTermMock2023Data = require('./mockdata/fallTerm2023.json')
+const fallTerm2023 = require('./fallTerm2023')
 const Dance = require('../src/models/Dance')
 const Participant = require('../src/models/Participant.js')
 
@@ -11,16 +11,14 @@ const populateDbWithMockData = async (connectionString) => {
 	let conn
 	try {
 		mongoose.set('strictQuery', false)
-		conn = await mongoose.connect(
-			'mongodb+srv://JunitaBerglin:losenord1@cluster0.uuzml7c.mongodb.net/?retryWrites=true&w=majority'
-		)
+		conn = await mongoose.connect(connectionString)
 
 		console.log(`MongoDB connected: ${conn.connection.host}`)
 
 		// POPULATE DATA ACCOORDING TO YOUR MODELS
 		await Dance.deleteMany()
-		await Dance.create(springTerm2023MockData)
-		await Dance.create(fallTermMock2023Data)
+		await Dance.create(springTerm2023.springTerm2023)
+		await Dance.create(fallTerm2023.fallTerm2023)
 
 		console.log('Database successfully populated with test data')
 	} catch (error) {
