@@ -27,9 +27,17 @@ const DanceSchema = new mongoose.Schema({
 	},
 	aktivKurs: {
 		type: Boolean,
-		required: true,
 	},
-	participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Participant' }],
+	participants: {
+		type: [
+			{
+				participant: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: 'Participant',
+				},
+			},
+		],
+	},
 	amountOfParticipants: { type: Number, default: 0 },
 })
 

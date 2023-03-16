@@ -9,7 +9,7 @@ const ParticipantSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	class: {
+	danceClass: {
 		type: String,
 		required: true,
 	},
@@ -19,7 +19,6 @@ const ParticipantSchema = new mongoose.Schema({
 	},
 	paymentStatus: {
 		type: String,
-		required: true,
 	},
 })
 

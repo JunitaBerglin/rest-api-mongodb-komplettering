@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/api/v1/danceclasses', danceRoute)
-app.use('/api/v1/patricipants', participantRoute)
+app.use('/api/v1/participants', participantRoute)
 
 const port = 5001
 const run = async () => {

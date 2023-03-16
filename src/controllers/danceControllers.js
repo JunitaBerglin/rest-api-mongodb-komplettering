@@ -3,7 +3,16 @@ const Dance = require('../models/Dance')
 const { NotFoundError } = require('../utils/errors')
 
 exports.getAllDanceClasses = async (req, res) => {
-	const danceClasses = await Dance.find()
+	try {
+		const danceClasses = await Dance.find()
 
-	return res.json(danceClasses)
+		if (!danceClasses) {
+			throw new NotFoundError('There are no danceclasses / det finns inga dansklasser')
+		}
+
+		res.json(danceClasses)
+	} catch (error) {
+		console.error(error)
+		return res.status(500).json({ message: error.message })
+	}
 }
